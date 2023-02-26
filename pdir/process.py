@@ -10,16 +10,12 @@ os.rename(INPUT_FILE, INPUT_FILE_CLEAN)
 
 OUTPUT_FILE_NAME = 'OS_GH_USERNAME.txt'
 OUTPUT_FILE = os.path.join(OUTPUT_DIR, OUTPUT_FILE_NAME)
-YES = 'y'
 
 # Check if output file exists and delete it if specified by user
 if os.path.isfile(OUTPUT_FILE):
-    DELETE_FLAG = input('Output file exists. Delete and start anew? {y/N}: ')
-    if DELETE_FLAG.lower() == YES:
-        print('Deleting...')
-        os.remove(OUTPUT_FILE)
-    else:
-        print('Not deleting')
+
+    # Delete output file if it already exists
+    os.remove(OUTPUT_FILE)
 
 # Write data from input file to output file
 with open(INPUT_FILE_CLEAN, 'r') as input_file, open(OUTPUT_FILE, 'w') as output_file:
@@ -35,5 +31,4 @@ with open(OUTPUT_FILE, 'r+') as f:
     f.write(data)
     f.truncate()
 
-print('Output file created successfully.')
 exit(0)

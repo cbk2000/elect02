@@ -20,22 +20,14 @@ if not os.path.isfile(input_path):
     exit(1)
 
 if not os.path.isdir(output_dir):
-    print("Output directory does not exist, proceed to create..")
+
+    # create the output directory if it doesn't exist
     os.makedirs(output_dir)
 
 if os.path.isfile(output_path):
-    print("Output file already exists.")
-    choice = input("Do you want to (o)verwrite, (a)ppend or (q)uit? ")
 
-    if choice == "o":
-        os.remove(output_path)
-    elif choice == "a":
-        pass
-    elif choice == "q":
-        exit(1)
-    else:
-        print("Invalid option, quitting.")
-        exit(1)
+    # remove the output file if it already exists
+    os.remove(output_path)
 
 
 section_header = ""
@@ -77,5 +69,4 @@ with open(input_path, 'r') as f:
             question_contents = ""
             answer = ""
 
-print("\nOutput file created successfully.")
 exit(0)
